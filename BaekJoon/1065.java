@@ -8,7 +8,7 @@ class Main
 	{
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
-    	int count = 0;
+    		int count = 0;
 	
 		if(N<100){
 		    count = N;
