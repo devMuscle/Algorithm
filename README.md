@@ -1,4 +1,4 @@
-# SelfLevelUp_Algorithm
-Algorithm Program Solving_constantly
+# Algorithm
+## Algorithm Program Solving_constantly
 
-이 프로젝트는 21년 9월22일 부터 시작하여 꾸준히 알고리즘 문제를 풀어 개인 실력향상을 도모하는 프로젝트이다.
+개인 실력 향상을 위해 꾸준히 알고리즘 문제를 풀이한 것이다.
