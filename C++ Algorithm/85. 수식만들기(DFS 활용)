@@ -1,0 +1,66 @@
+# 문제 제목
+수식만들기(DFS 활용)
+## 풀이 방법
+- 연산자가 남은 경우 현재까지의 연산 결과에 연산을 진행한다
+- 끝까지 다 연산을 한 후 결과에 대해 최솟값/최댓값을 갱신한다
+
+**Java코드**
+```java
+import java.util.Scanner;
+
+public class Main {
+
+    private static final char[] operators = {'+', '-', '*', '/'};
+    private static final int[] operatorCount = {0, 0, 0, 0};
+    private static int minResult = Integer.MAX_VALUE;
+    private static int maxResult = Integer.MIN_VALUE;
+
+    private static int operate(char operator, int num1, int num2) {
+        return switch (operator) {
+            case '+' -> num1 + num2;
+            case '-' -> num1 - num2;
+            case '*' -> num1 * num2;
+            case '/' -> num1 / num2;
+            default -> 0;
+        };
+    }
+
+    private static void calculate(int index, int[] arr, int result) {
+        if(index == arr.length) {
+            minResult = Math.min(minResult, result);
+            maxResult = Math.max(maxResult, result);
+            return;
+        }
+
+        for(int i = 0; i < operatorCount.length; i++) {
+            if(operatorCount[i] == 0) continue;
+
+            int nextResult = operate(operators[i], result, arr[index]);
+
+            operatorCount[i]--;
+            calculate(index + 1, arr, nextResult);
+            operatorCount[i]++;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        for(int i = 0; i < 4; i++) {
+            operatorCount[i] = sc.nextInt();
+        }
+
+        calculate(1, arr, arr[0]);
+
+        System.out.println(maxResult);
+        System.out.println(minResult);
+    }
+}
+```
