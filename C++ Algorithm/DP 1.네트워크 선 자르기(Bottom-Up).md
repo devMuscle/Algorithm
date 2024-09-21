@@ -6,6 +6,7 @@
 (1m를 자르는 가지수에서 뒤에 2m를 놓기, 2m를 자르는 가지수에서 뒤에 1m를 놓기)
 - 이걸로 점화식을 세워서 푼다
 
+**C++ 코드**
 ```c++
 #include <iostream>
 #include <bits/stdc++.h>
@@ -32,5 +33,28 @@ int main()
 	cout << net_line[n];
 	
 	return 0;	
+}
+```
+**Java코드**
+
+```java
+import java.util.Scanner;
+
+public class Algorithm {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+
+        for(int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+
+        System.out.println(dp[n]);
+    }
 }
 ```
