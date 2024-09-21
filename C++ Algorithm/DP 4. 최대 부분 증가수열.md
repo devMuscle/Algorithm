@@ -6,6 +6,7 @@
 - k번째 까지의 최대부분 증가수열의 값은 그 앞쪽 자릿수 중 k번째 수보다 작은 수들 중에, 가장 큰 최대부분 증가수열의 값+1을 한 값이다
 - 최대부분 증가수열이 저장된 배열에서 가장 큰 값이 정답이다
 
+**C++ 코드**
 ```c++
 #include <iostream>
 #include <bits/stdc++.h>
@@ -56,5 +57,39 @@ int main()
 	cout << result;
 	
 	return 0;	
+}
+```
+**Java 코드**
+```java
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Algorithm {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        int[] dp = new int[n];
+
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        dp[0] = 1;
+
+        for(int i = 1; i < n; i++) {
+            int val = 0;
+
+            for(int j = 0; j < i; j++) {
+                if(arr[j] < arr[i]) val = Math.max(val, dp[j]);
+            }
+
+            dp[i] = val + 1;
+        }
+
+        System.out.println(Arrays.stream(dp).max().getAsInt());
+    }
 }
 ```
