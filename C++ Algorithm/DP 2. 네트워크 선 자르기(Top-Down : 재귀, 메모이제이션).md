@@ -3,6 +3,8 @@
 ## 풀이 방법
 - 재귀함수를 호출해서 얻은 값을 배열에 저장해서 중복되는 연산을 피한다
 
+
+**C++ 코드**
 ```c++
 #include <iostream>
 #include <bits/stdc++.h>
@@ -40,5 +42,29 @@ int main()
 	cout << result;
 		
 	return 0;	
+}
+```
+
+**Java 코드**
+```java
+import java.util.Scanner;
+
+public class Algorithm {
+
+    private static int solve(int i, int[] dp) {
+        if(i == 1 || i == 2) return i;
+        if(dp[i] != 0) return dp[i];
+
+        return dp[i] = solve(i - 1, dp) + solve(i - 2, dp);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] dp = new int[n + 1];
+
+        System.out.println(solve(n, dp));
+    }
 }
 ```
